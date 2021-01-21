@@ -3,14 +3,18 @@ syntax = "proto3";
 // module system 的な
 package todoPackage;
 
+
+// Service: server に call できる rpc を定義する
 service Todo {
   rpc createTodo(TodoItem) returns (TodoItem);
-  rpc readTodos(void) returns (TodoItems);
+  rpc readTodos(unit) returns (TodoItems);
+  rpc readTodosStream(unit) returns (stream TodoItem);
 }
 
 
-// rpc は、絶対に引数と戻り値がないといけないので、 void 型を定義する
-message void {}
+// rpc は、絶対に引数と戻り値がないといけないので、 unit 型を定義する
+// void という名前を使うとバグる
+message unit {}
 
 message TodoItem{
   int32 id = 1;
