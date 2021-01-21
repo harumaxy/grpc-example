@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// module system 的な
+package todoPackage;
+
+service Todo {
+  rpc createTodo(TodoItem) returns (TodoItem);
+  rpc readTodos(void) returns (TodoItems);
+}
+
+
+// rpc は、絶対に引数と戻り値がないといけないので、 void 型を定義する
+message void {}
+
+message TodoItem{
+  int32 id = 1;
+  string text = 2;
+}
+
+message TodoItems {
+  repeated TodoItem items = 1;
+}
