@@ -21,6 +21,7 @@ message TodoItem{
   string text = 2;
 }
 
+// Array系も message として定義する
 message TodoItems {
   repeated TodoItem items = 1;
 }
